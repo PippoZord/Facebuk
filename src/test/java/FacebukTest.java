@@ -18,4 +18,10 @@ public class FacebukTest {
         assertThat(SUT.toString()).isEqualTo("Mario Roberta Luca Filippo \nRoberta Mario Luca Filippo Anna \nLuca Mario Roberta Filippo Anna \nFilippo Mario Roberta Luca Anna \nAnna Roberta Luca Filippo \n");
     }
 
+    @Test
+    public void Storia3(){
+        Facebuk SUT = new Facebuk(new StringReader(input));
+        assertThat(SUT.amiciComuni("Filippo", "Anna")).containsExactlyInAnyOrder("Roberta", "Luca");
+    }
+
 }
