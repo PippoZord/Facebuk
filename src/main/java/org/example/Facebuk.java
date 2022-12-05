@@ -15,10 +15,7 @@ public class Facebuk {
 
     private void popolaMappa(String s){
         String [] nomi = s.split(" ");
-        Set<String> amici = new LinkedHashSet<>();
-        for (int i = 1; i<nomi.length; i++){
-            amici.add(nomi[i]);
-        }
+        Set<String> amici = new LinkedHashSet<>(Arrays.asList(nomi).subList(1, nomi.length));
         users.put(nomi[0], amici);
     }
     @Override
@@ -34,5 +31,11 @@ public class Facebuk {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    public Set<String> amiciComuni(String u1, String u2) {
+        Set<String> comuni = new LinkedHashSet<>(users.get(u1));
+        comuni.retainAll(users.get(u2));
+        return comuni;
     }
 }
