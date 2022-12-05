@@ -10,6 +10,8 @@ public class Facebuk {
     private final Map<String, Set<String>> users = new LinkedHashMap<>();
     private final Map<String, Set<String>> amiciSet = new TreeMap<>();
 
+    private ViewStrategy strategyView = new ListView();
+
     public Facebuk(StringReader input) {
         Scanner s = new Scanner(input);
         while (s.hasNextLine()){
@@ -57,23 +59,17 @@ public class Facebuk {
 
 
         StringBuilder sb = new StringBuilder();
-        for (String k: amiciSet.keySet()) {
-            sb.append("(");
-            sb.append(k);
-            sb.append(") ");
-            sb.append("[");
-            for (String v: amiciSet.get(k)) {
-                sb.append(v);
-                sb.append(" ");
-            }
-            sb.deleteCharAt(sb.length()-1);
-            sb.append("]\n");
-        }
+        List<Map.Entry<String, Set<String>>> list = new ArrayList<>(amiciSet.entrySet());
+        strategyView.format(sb, list);
 
         return sb.toString();
     }
 
     private boolean sonoAmici(String key, String v) {
         return users.get(key).contains(v);
+    }
+
+    public void setViewStrategy(ViewStrategy s) {
+        strategyView = s;
     }
 }
