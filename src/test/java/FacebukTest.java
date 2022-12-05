@@ -1,6 +1,4 @@
-import org.example.AlphabeticalOrder;
-import org.example.ListView;
-import org.example.Facebuk;
+import org.example.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
@@ -52,5 +50,12 @@ public class FacebukTest {
         Facebuk SUT = new Facebuk(new StringReader(input));
         SUT.setOrderStrategy(new AlphabeticalOrder());
         assertThat(SUT.output()).isEqualTo("(Filippo Anna) [Roberta Luca]\n(Luca Anna) [Roberta Filippo]\n(Luca Filippo) [Mario Roberta Anna]\n(Mario Filippo) [Roberta Luca]\n(Mario Luca) [Roberta Filippo]\n(Mario Roberta) [Luca Filippo]\n(Roberta Anna) [Luca Filippo]\n(Roberta Filippo) [Mario Luca Anna]\n(Roberta Luca) [Mario Filippo Anna]\n");
+    }
+
+    @Test
+    public void Storia7() {
+        Facebuk SUT = new Facebuk(new StringReader(input));
+        SUT.setOrderStrategy(new NumberOrder());
+        assertThat(SUT.output()).isEqualTo("(Filippo Anna) [Roberta Luca]\n(Luca Anna) [Roberta Filippo]\n(Mario Filippo) [Roberta Luca]\n(Mario Luca) [Roberta Filippo]\n(Mario Roberta) [Luca Filippo]\n(Roberta Anna) [Luca Filippo]\n(Luca Filippo) [Mario Roberta Anna]\n(Roberta Filippo) [Mario Luca Anna]\n(Roberta Luca) [Mario Filippo Anna]\n");
     }
 }
