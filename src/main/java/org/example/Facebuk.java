@@ -11,7 +11,7 @@ public class Facebuk {
     private final Map<String, Set<String>> amiciSet = new TreeMap<>();
 
     private ViewStrategy strategyView = new ListView();
-    private OrderStrategy strategyOrder = null;
+    private OrderStrategy strategyOrder = new AlphabeticalOrder();
 
     public Facebuk(StringReader input) {
         Scanner s = new Scanner(input);
@@ -61,7 +61,8 @@ public class Facebuk {
 
         StringBuilder sb = new StringBuilder();
         List<Map.Entry<String, Set<String>>> list = new ArrayList<>(amiciSet.entrySet());
-        list.sort(strategyOrder);
+        if (strategyOrder!= null)
+            list.sort(strategyOrder);
         strategyView.format(sb, list);
 
         return sb.toString();
