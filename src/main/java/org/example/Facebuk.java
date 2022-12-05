@@ -38,7 +38,7 @@ public class Facebuk {
     }
 
     public Set<String> amiciComuni(String u1, String u2) {
-        Set<String> comuni = new HashSet<>(users.get(u1));
+        Set<String> comuni = new LinkedHashSet<>(users.get(u1));
         comuni.retainAll(users.get(u2));
         return comuni;
     }
