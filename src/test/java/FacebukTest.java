@@ -1,6 +1,4 @@
-import org.example.AlphabeticalOrder;
-import org.example.ListView;
-import org.example.Facebuk;
+import org.example.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
