@@ -9,16 +9,18 @@ public class Facebuk {
     public Facebuk(StringReader input) {
         Scanner s = new Scanner(input);
         while (s.hasNextLine()){
-            String [] nomi = s.nextLine().split(" ");
-            Set<String> amici = new LinkedHashSet<>();
-            for (int i = 1; i<nomi.length; i++){
-                amici.add(nomi[i]);
-            }
-            users.put(nomi[0], amici);
+            popolaMappa(s.nextLine());
         }
     }
 
-
+    private void popolaMappa(String s){
+        String [] nomi = s.split(" ");
+        Set<String> amici = new LinkedHashSet<>();
+        for (int i = 1; i<nomi.length; i++){
+            amici.add(nomi[i]);
+        }
+        users.put(nomi[0], amici);
+    }
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
